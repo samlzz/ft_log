@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 23:32:17 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/27 23:58:55 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,8 @@ Logger	&Logger::instance(void)
 // Configuration
 // ============================================================================
 
-void	Logger::setLevel(e_log_level level)	{ _level = level; }
-
-e_log_level	Logger::level(void) const		{ return _level; }
+void		Logger::setLevel(e_log_level level)	{ _level = level; }
+e_log_level	Logger::level(void) const			{ return _level; }
 
 void	Logger::enableCategory(const std::string &category)
 {
@@ -90,15 +89,8 @@ bool	Logger::categoryEnabled(const std::string &category) const
 	return (_categories.find(category) != _categories.end());
 }
 
-void	Logger::setOutputStream(std::ostream &os)
-{
-	_out = &os;
-}
-
-std::ostream	&Logger::stream(void) const
-{
-	return (*_out);
-}
+void			Logger::setOutputStream(std::ostream &os)	{ _out = &os; }
+std::ostream	&Logger::stream(void) const					{ return *_out; }
 
 void	Logger::setUseColor(bool enabled)
 {

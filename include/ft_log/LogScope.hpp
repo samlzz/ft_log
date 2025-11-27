@@ -6,16 +6,29 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:39:07 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 22:45:22 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 00:16:21 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LOG_LOG_SCOPE_HPP
 # define FT_LOG_LOG_SCOPE_HPP
 
-# include <string>
+# include "AnsiColor.hpp"
+# include "Logger.hpp"
 
-# include "LogConfig.hpp"
+// ============================================================================
+// Defines to set colors used in LogScope
+// ============================================================================
+
+# ifndef FT_LOG_SCOPE_ENTER_COLOR
+#  define FT_LOG_SCOPE_ENTER_COLOR	FT_LOG_COLOR_RED
+# endif
+# ifndef FT_LOG_SCOPE_EXIT_COLOR
+#  define FT_LOG_SCOPE_EXIT_COLOR	FT_LOG_COLOR_RED
+# endif
+# ifndef FT_LOG_SCOPE_NAME_COLOR
+#  define FT_LOG_SCOPE_NAME_COLOR	FT_LOG_COLOR_BLUE
+# endif
 
 // ============================================================================
 // ft_log::LogScope - RAII tracing helper
@@ -30,35 +43,18 @@ namespace ft_log
 class LogScope
 {
 public:
-	LogScope(const char *category, const char *name,
-		e_log_level level)
-		: _category(category)
-		, _name(name)
-		, _level(level)
-		, _enabled(false)
-	{
-		if (ft_log::enabled(_category, _level))
-		{
-			_enabled = true;
-			ft_log::log(_category, _level)
-				<< "enter " << _name << "\n";
-		}
-	}
-
-	~LogScope(void)
-	{
-		if (_enabled)
-		{
-			ft_log::log(_category, _level)
-				<< "exit " << _name << "\n";
-		}
-	}
+	LogScope(const char *category, const char *name, e_log_level level);
+	~LogScope(void);
 
 private:
 	const char	*_category;
 	const char	*_name;
 	e_log_level	_level;
 	bool		_enabled;
+
+	LogScope();
+	LogScope(const LogScope &other);
+	LogScope	&operator=(const LogScope &other);
 };
 
 } // namespace ft_log

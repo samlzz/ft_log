@@ -6,13 +6,15 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:33:18 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 23:00:40 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/27 23:42:21 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LOG_LOGGER_HPP
 # define FT_LOG_LOGGER_HPP
 
+# include <stdint.h>
+# include <streambuf>
 # include <string>
 # include <set>
 # include <ostream>
@@ -90,10 +92,21 @@ public:
 	std::string		colorize(const std::string &text,
 						const char *ansiCode) const;
 
+	// exposed for LogConfig or any else wrapper
+	static std::ostream	g_nullStream;
+
 private:
 	Logger(void);
 	Logger(const Logger &);
 	Logger	&operator=(const Logger &);
+
+	class NullBuffer : public std::streambuf
+	{
+	public:
+		int32_t	overflow(int c) { return c; }
+	};
+
+	static NullBuffer	g_nullBuffer;
 
 	e_log_level				_level;
 	std::set<std::string>	_categories;

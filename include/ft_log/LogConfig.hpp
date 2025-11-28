@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LOG_LOG_CONFIG_HPP
-# define FT_LOG_LOG_CONFIG_HPP
+#ifndef LOG_CONFIG_HPP
+# define LOG_CONFIG_HPP
 
 # include <string>
 # include <ostream>
 
-# include "Logger.hpp"
+# include "internal/Logger.hpp"
 
 // ============================================================================
 // ft_log - public configuration and helper API
@@ -97,5 +97,5 @@ std::string	color(const std::string &text, const char *ansiCode);
 
 } // namespace ft_log
 
-#endif // FT_LOG_LOG_CONFIG_HPP
+#endif // LOG_CONFIG_HPP
 

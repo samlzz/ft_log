@@ -6,12 +6,12 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:33:18 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 23:42:21 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:39:35 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LOG_LOGGER_HPP
-# define FT_LOG_LOGGER_HPP
+#ifndef LOGGER_HPP
+# define LOGGER_HPP
 
 # include <stdint.h>
 # include <streambuf>
@@ -98,7 +98,7 @@ public:
 private:
 	Logger(void);
 	Logger(const Logger &);
-	Logger	&operator=(const Logger &);
+	Logger &operator=(const Logger &);
 
 	class NullBuffer : public std::streambuf
 	{

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "internal/Logger.hpp"
 #include "LogScope.hpp"
-#include "Logger.hpp"
 
 namespace ft_log {
 

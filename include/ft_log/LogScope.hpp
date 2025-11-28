@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LOG_LOG_SCOPE_HPP
-# define FT_LOG_LOG_SCOPE_HPP
+#ifndef LOG_SCOPE_HPP
+# define LOG_SCOPE_HPP
 
 # include "AnsiColor.hpp"
-# include "Logger.hpp"
+# include "internal/Logger.hpp"
 
 // ============================================================================
 // Defines to set colors used in LogScope
@@ -59,5 +59,5 @@ private:
 
 } // namespace ft_log
 
-#endif // FT_LOG_LOG_SCOPE_HPP
+#endif // LOG_SCOPE_HPP
 

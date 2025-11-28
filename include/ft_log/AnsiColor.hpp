@@ -6,12 +6,12 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:36:06 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 23:09:04 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:34:43 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LOG_ANSI_COLOR_HPP
-# define FT_LOG_ANSI_COLOR_HPP
+#ifndef ANSI_COLOR_HPP
+# define ANSI_COLOR_HPP
 
 // ============================================================================
 // ANSI color codes

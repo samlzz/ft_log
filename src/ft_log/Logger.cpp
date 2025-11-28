@@ -6,15 +6,15 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 23:58:55 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:27:57 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <ostream>
 
-#include "Logger.hpp"
 #include "AnsiColor.hpp"
+#include "internal/Logger.hpp"
 
 namespace ft_log
 {

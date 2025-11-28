@@ -6,14 +6,14 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:47:37 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 23:43:29 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:28:12 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ostream>
 
+#include "internal/Logger.hpp"
 #include "LogConfig.hpp"
-#include "Logger.hpp"
 
 // ============================================================================
 // Global configuration API

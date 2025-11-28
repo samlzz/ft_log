@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:36:11 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/27 23:01:22 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:35:33 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include "internal/Logger.hpp"
 
 // ============================================================================
-// ft_log - public configuration and helper API
+// ft_log - public configuration API
 // ============================================================================
 
 namespace ft_log
 {
 
 // ---------------------------------------------------------------------------
-// Global configuration API
+// Global configuration
 // ---------------------------------------------------------------------------
 
 /**
@@ -70,30 +70,6 @@ void		setColorEnabled(bool enabled);
  * @brief Check whether ANSI color output is enabled.
  */
 bool		isColorEnabled(void);
-
-// ---------------------------------------------------------------------------
-// Runtime query and logging helpers
-// ---------------------------------------------------------------------------
-
-/**
- * @brief Check if logging is enabled for the category and level.
- */
-bool		enabled(const std::string &category,
-				e_log_level level = LOG_TRACE);
-
-/**
- * @brief Get the output stream for the given category and level.
- *
- */
-std::ostream	&log(const std::string &category,
-				e_log_level level = LOG_TRACE);
-
-/**
- * @brief Return a colorized version of the given text.
- *
- * If color output is disabled, the plain text is returned.
- */
-std::string	color(const std::string &text, const char *ansiCode);
 
 } // namespace ft_log
 

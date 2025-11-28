@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:33:18 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:39:35 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:49:02 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ public:
 	bool			enabled(const std::string &category,
 						e_log_level level) const;
 
-	std::ostream	&log(const std::string &category,
-						e_log_level level);
+	std::ostream	&log(void);
 
 	/**
 	 * @brief Colorize text using the given ANSI code.

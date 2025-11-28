@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:27:57 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/28 20:48:57 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,8 @@ bool	Logger::enabled(const std::string &category, e_log_level level) const
 	return (level >= _level && categoryEnabled(category));
 }
 
-std::ostream	&Logger::log(const std::string &category, e_log_level level)
+std::ostream	&Logger::log(void)
 {
-	(void)category;
-	(void)level;
 	return (stream());
 }
 

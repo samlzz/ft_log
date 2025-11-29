@@ -108,11 +108,6 @@ bool	Logger::enabled(const std::string &category, e_log_level level) const
 	return (level >= _level && categoryEnabled(category));
 }
 
-std::ostream	&Logger::log(void)
-{
-	return (stream());
-}
-
 std::string	Logger::colorize(const std::string &text, const char *ansiCode) const
 {
 	if (!_useColor || !ansiCode)

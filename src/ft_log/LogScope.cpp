@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 00:00:39 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:48:19 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:00:35 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	LogScope::_logIndent(Logger *instance)
 	}
 
 	for (int32_t i = 0; i < _indentLvl; ++i)
-		instance->log() << FT_LOG_SCOPE_INDENT_VAL;
+		instance->stream() << FT_LOG_SCOPE_INDENT_VAL;
 }
 
 // ============================================================================
@@ -56,7 +56,7 @@ LogScope::LogScope(const char *category, const char *name, e_log_level level)
 	_enabled = true;
 
 	_logIndent(&instance);
-	instance.log()
+	instance.stream()
 		<< instance.colorize("enter ", FT_LOG_SCOPE_ENTER_COLOR)
 		<< instance.colorize(_name, FT_LOG_SCOPE_NAME_COLOR)
 		<< "\n";
@@ -74,7 +74,7 @@ LogScope::~LogScope(void)
 		_indentLvl--;
 	_logIndent(&instance);
 
-	instance.log()
+	instance.stream()
 		<< instance.colorize("exit ", FT_LOG_SCOPE_EXIT_COLOR)
 		<< instance.colorize(_name, FT_LOG_SCOPE_NAME_COLOR)
 		<< "\n";

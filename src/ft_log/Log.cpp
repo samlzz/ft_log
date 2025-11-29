@@ -76,7 +76,7 @@ std::ostream	&log(const std::string &category, e_log_level level)
 	Logger	&instance = Logger::instance();
 
 	if (instance.enabled(category, level))
-		return (instance.log());
+		return (instance.stream());
 	return Logger::_nullStream;
 }
 

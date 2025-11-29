@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   level.hpp                                          :+:      :+:    :+:   */
+/*   LevelDisplay.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/29 19:13:11 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 22:53:16 by sliziard         ###   ########.fr       */
+/*   Created: 2025/11/29 22:13:43 by sliziard          #+#    #+#             */
+/*   Updated: 2025/11/29 22:38:39 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEVEL_HPP
-# define LEVEL_HPP
+#ifndef LEVEL_DISPLAY_HPP
+# define LEVEL_DISPLAY_HPP
 
-#include <ostream>
+# include "level.hpp"
 
 namespace ft_log
 {
-
-/**
- * @brief Logging severity level.
- */
-enum e_log_level
-{
-	LOG_TRACE = 0,
-	LOG_DEBUG,
-	LOG_INFO,
-	LOG_WARN,
-	LOG_ERROR,
-	LOG_OFF
-};
-
-std::ostream	&operator<<(std::ostream &os, e_log_level lvl);
-
-} // namespace ft_log
+const char	*e_levelLabel(e_log_level lvl);
+const char	*e_levelColor(e_log_level lvl);
+}
 
 #endif
 

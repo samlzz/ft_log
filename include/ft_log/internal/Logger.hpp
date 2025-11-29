@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:33:18 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 19:24:19 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 22:40:27 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ namespace ft_log
  *
  * This class holds all runtime logging state:
  *  - global log level,
+ *  - static null stream,
  *  - enabled categories,
  *  - output stream,
- *  - use color flag.
+ *  - use color flag
+ *  - show level in log
  *
  * It is not meant to be used directly in most code. Prefer the public
  * facade functions declared in LogConfig.hpp.
@@ -64,12 +66,17 @@ public:
 	void			setLevel(e_log_level level);
 	e_log_level		level(void) const;
 
+	void			setShowLvl(bool enabled);
+	bool			showLvl(void) const;
+
 	// ---------------------------------------------------------------------
-	// Query 
+	// Query and logging
 	// ---------------------------------------------------------------------
 
 	bool			enabled(const std::string &category,
 						e_log_level level) const;
+
+	std::ostream	&log(e_log_level level);
 
 	/**
 	 * @brief Colorize text using the given ANSI code.
@@ -99,6 +106,7 @@ private:
 	std::set<std::string>	_categories;
 	std::ostream			*_out;
 	bool					_useColor;
+	bool					_showLvl;
 };
 
 } // namespace ft_log

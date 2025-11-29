@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 21:40:18 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 22:53:24 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "AnsiColor.hpp"
 #include "internal/Logger.hpp"
+#include "internal/LevelDisplay.hpp"
+#include "level.hpp"
 
 namespace ft_log
 {
@@ -31,10 +33,11 @@ std::ostream		Logger::_nullStream(&_nullBuffer);
 // ============================================================================
 
 Logger::Logger(void)
-	: _level(FTLOG_INFO)
+	: _level(LOG_INFO)
 	, _categories()
 	, _out(&std::cerr)
 	, _useColor(true)
+	, _showLvl(false)
 {}
 
 Logger::Logger(const Logger &other)
@@ -42,6 +45,7 @@ Logger::Logger(const Logger &other)
 	, _categories(other._categories)
 	, _out(other._out)
 	, _useColor(other._useColor)
+	, _showLvl(other._showLvl)
 {}
 
 Logger	&Logger::operator=(const Logger &other)
@@ -52,6 +56,7 @@ Logger	&Logger::operator=(const Logger &other)
 		_categories = other._categories;
 		_out = other._out;
 		_useColor = other._useColor;
+		_showLvl = other._showLvl;
 	}
 	return *this;
 }
@@ -69,6 +74,9 @@ Logger	&Logger::instance(void)
 
 void			Logger::setLevel(e_log_level level)	{ _level = level; }
 e_log_level		Logger::level(void) const			{ return _level; }
+
+void			Logger::setShowLvl(bool enabled)	{ _showLvl = enabled; }
+bool			Logger::showLvl(void) const			{ return _showLvl; }
 
 void			Logger::setStream(std::ostream &os)	{ _out = &os; }
 std::ostream	&Logger::stream(void) const			{ return *_out; }
@@ -106,6 +114,23 @@ bool	Logger::categoryEnabled(const std::string &category) const
 bool	Logger::enabled(const std::string &category, e_log_level level) const
 {
 	return (level >= _level && categoryEnabled(category));
+}
+
+std::ostream	&Logger::log(e_log_level level)
+{
+	std::ostream	&os = *_out;
+
+	if (_showLvl)
+	{
+		const char	*label = e_levelLabel(level);
+		os << '[';
+		if (_useColor)
+			os << colorize(label, e_levelColor(level));
+		else
+			os << label;
+		os << ']';
+	}
+	return os;
 }
 
 std::string	Logger::colorize(const std::string &text, const char *ansiCode) const

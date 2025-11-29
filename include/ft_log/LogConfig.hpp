@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:36:11 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:35:33 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:24:00 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string>
 # include <ostream>
 
-# include "internal/Logger.hpp"
+# include "level.hpp"
 
 // ============================================================================
 // ft_log - public configuration API

@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_log.hpp                                         :+:      :+:    :+:   */
+/*   level.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/28 21:27:09 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 19:24:02 by sliziard         ###   ########.fr       */
+/*   Created: 2025/11/29 21:37:11 by sliziard          #+#    #+#             */
+/*   Updated: 2025/11/29 21:41:12 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LOG_HPP
-#define FT_LOG_HPP
+#include <ostream>
 
-# include "level.hpp"	// IWYU pragma: export
-# include "LogConfig.hpp"	// IWYU pragma: export
-# include "LogOp.hpp"		// IWYU pragma: export
-# include "LogScope.hpp"	// IWYU pragma: export
+#include "level.hpp"
 
-#endif
+std::ostream &operator<<(std::ostream &os, e_log_level lvl)
+{
+	switch (lvl)
+	{
+		case FTLOG_TRACE: os << "TRACE"; break;
+		case FTLOG_DEBUG: os << "DEBUG"; break;
+		case FTLOG_INFO:  os << "INFO"; break;
+		case FTLOG_WARN:  os << "WARN"; break;
+		case FTLOG_ERROR: os << "ERROR"; break;
+		case FTLOG_OFF:   break;
+	}
+	return os;
+}
 

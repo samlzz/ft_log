@@ -6,15 +6,17 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:39:07 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 19:01:15 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:24:11 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LOG_SCOPE_HPP
 # define LOG_SCOPE_HPP
 
+# include <stdint.h>
+
 # include "AnsiColor.hpp"
-# include "internal/Logger.hpp"
+# include "level.hpp"
 
 // ============================================================================
 // Optional Defines to adapt print
@@ -35,6 +37,11 @@
 # ifndef FT_LOG_SCOPE_NAME_COLOR
 #  define FT_LOG_SCOPE_NAME_COLOR	FT_LOG_COLOR_BLUE
 # endif
+
+// ============================================================================
+// Forward declarations
+// ============================================================================
+class Logger;
 
 // ============================================================================
 // ft_log::LogScope - RAII tracing helper

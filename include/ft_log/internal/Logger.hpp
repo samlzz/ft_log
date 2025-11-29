@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:33:18 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 03:09:46 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:24:19 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,14 @@
 # include <set>
 # include <ostream>
 
+# include "level.hpp"
+
 // ============================================================================
 // ft_log::Logger - core logger implementation
 // ============================================================================
 
 namespace ft_log
 {
-
-/**
- * @brief Logging severity level.
- */
-enum e_log_level
-{
-	LOG_TRACE = 0,
-	LOG_DEBUG,
-	LOG_INFO,
-	LOG_WARN,
-	LOG_ERROR,
-	LOG_OFF
-};
 
 /**
  * @brief Core logger singleton.

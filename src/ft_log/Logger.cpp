@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 18:59:06 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 21:40:18 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ std::ostream		Logger::_nullStream(&_nullBuffer);
 // ============================================================================
 
 Logger::Logger(void)
-	: _level(LOG_INFO)
+	: _level(FTLOG_INFO)
 	, _categories()
 	, _out(&std::cerr)
 	, _useColor(true)
@@ -53,14 +53,14 @@ Logger	&Logger::operator=(const Logger &other)
 		_out = other._out;
 		_useColor = other._useColor;
 	}
-	return (*this);
+	return *this;
 }
 
 Logger	&Logger::instance(void)
 {
 	static Logger	instance;
 
-	return (instance);
+	return instance;
 }
 
 // ============================================================================

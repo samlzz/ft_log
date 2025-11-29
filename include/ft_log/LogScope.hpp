@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:39:07 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:37:39 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:01:15 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ private:
 
 	static int32_t	_indentLvl;
 
-	void			_logIndent(Logger *instance = 0);
+	void			_logIndent(Logger &instance);
 
 	LogScope();
 	LogScope(const LogScope &other);

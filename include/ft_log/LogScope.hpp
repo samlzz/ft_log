@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:39:07 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 19:24:11 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 23:44:43 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ class LogScope
 {
 
 public:
-	LogScope(const char *category, const char *name, e_log_level level);
+	LogScope(const char *category, const char *name, e_log_level level = LOG_TRACE);
 	~LogScope(void);
 
 	// ---- Indent management ----

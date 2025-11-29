@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:47:37 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 19:06:10 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 23:13:06 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,16 @@ void	setColorEnabled(bool enabled)
 bool	isColorEnabled(void)
 {
 	return (Logger::instance().useColor());
+}
+
+void	setShowLevel(bool enabled)
+{
+	Logger::instance().setShowLvl(enabled);
+}
+
+bool	isShowLevelEnabled(void)
+{
+	return (Logger::instance().showLvl());
 }
 
 // ============================================================================

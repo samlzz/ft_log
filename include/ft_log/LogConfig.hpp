@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:36:11 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 19:24:00 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 23:13:00 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,16 @@ void		setColorEnabled(bool enabled);
  * @brief Check whether ANSI color output is enabled.
  */
 bool		isColorEnabled(void);
+
+/**
+ * @brief Enable or disable level prefixing for log messages.
+ */
+void		setShowLevel(bool enabled);
+
+/**
+ * @brief Check whether level prefixing is currently enabled.
+ */
+bool		isShowLevelEnabled(void);
 
 } // namespace ft_log
 

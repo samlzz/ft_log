@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:47:37 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 03:01:05 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:06:10 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "internal/Logger.hpp"
 #include "LogConfig.hpp"
+#include "LogScope.hpp"
 
 // ============================================================================
 // Global configuration API
@@ -78,6 +79,20 @@ std::ostream	&log(const std::string &category, e_log_level level)
 	if (instance.enabled(category, level))
 		return (instance.stream());
 	return Logger::_nullStream;
+}
+
+std::ostream	&indentedLog(const std::string &category, e_log_level level)
+{
+	Logger	&instance = Logger::instance();
+
+	if (!instance.enabled(category, level))
+		return Logger::_nullStream;
+
+	std::ostream	&logStream = instance.stream();
+	int32_t			currIndent = LogScope::indentLevel();
+	for (int32_t i = 0; i < currIndent; ++i)
+		logStream << FT_LOG_SCOPE_INDENT_VAL;
+	return logStream;
 }
 
 std::string	color(const std::string &text, const char *ansiCode)

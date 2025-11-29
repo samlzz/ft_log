@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 20:32:14 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:35:18 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:59:24 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,14 @@ bool			enabled(const std::string &category,
 
 /**
  * @brief Get the output stream for the given category and level.
- *
  */
 std::ostream	&log(const std::string &category,
+				e_log_level level = LOG_TRACE);
+
+/**
+ * @brief Behave same as log, except indentation based on LogScope::indentLevel
+ */
+std::ostream	&indentedLog(const std::string &category,
 				e_log_level level = LOG_TRACE);
 
 /**

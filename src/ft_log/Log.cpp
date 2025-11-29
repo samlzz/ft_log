@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:47:37 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:48:31 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:01:05 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	isCategoryEnabled(const std::string &category)
 
 void	setOutputStream(std::ostream &os)
 {
-	Logger::instance().setOutputStream(os);
+	Logger::instance().setStream(os);
 }
 
 void	setColorEnabled(bool enabled)
@@ -77,7 +77,7 @@ std::ostream	&log(const std::string &category, e_log_level level)
 
 	if (instance.enabled(category, level))
 		return (instance.log());
-	return Logger::g_nullStream;
+	return Logger::_nullStream;
 }
 
 std::string	color(const std::string &text, const char *ansiCode)

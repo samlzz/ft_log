@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:33:18 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:49:02 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 02:57:10 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,20 @@ public:
 	// Configuration
 	// ---------------------------------------------------------------------
 
-	void			setLevel(e_log_level level);
-	e_log_level		level(void) const;
-
 	void			enableCategory(const std::string &category);
 	void			disableCategory(const std::string &category);
 	bool			categoryEnabled(
 						const std::string &category) const;
 
-	void			setOutputStream(std::ostream &os);
+	// ---- Accessors ----
+	void			setStream(std::ostream &os);
 	std::ostream	&stream(void) const;
 
 	void			setUseColor(bool state);
 	bool			useColor(void) const;
+
+	void			setLevel(e_log_level level);
+	e_log_level		level(void) const;
 
 	// ---------------------------------------------------------------------
 	// Query and logging
@@ -92,7 +93,7 @@ public:
 						const char *ansiCode) const;
 
 	// exposed for LogConfig or any else wrapper
-	static std::ostream	g_nullStream;
+	static std::ostream	_nullStream;
 
 private:
 	Logger(void);
@@ -105,7 +106,7 @@ private:
 		int32_t	overflow(int c) { return c; }
 	};
 
-	static NullBuffer	g_nullBuffer;
+	static NullBuffer	_nullBuffer;
 
 	e_log_level				_level;
 	std::set<std::string>	_categories;

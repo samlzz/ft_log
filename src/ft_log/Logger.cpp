@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/28 20:48:57 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 03:00:09 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ namespace ft_log
 // NullBuffer/NullStream
 // ============================================================================
 
-Logger::NullBuffer	Logger::g_nullBuffer;
-std::ostream		Logger::g_nullStream(&g_nullBuffer);
+Logger::NullBuffer	Logger::_nullBuffer;
+std::ostream		Logger::_nullStream(&_nullBuffer);
 
 // ============================================================================
 // Construction
@@ -64,11 +64,21 @@ Logger	&Logger::instance(void)
 }
 
 // ============================================================================
-// Configuration
+// Accessors
 // ============================================================================
 
-void		Logger::setLevel(e_log_level level)	{ _level = level; }
-e_log_level	Logger::level(void) const			{ return _level; }
+void			Logger::setLevel(e_log_level level)	{ _level = level; }
+e_log_level		Logger::level(void) const			{ return _level; }
+
+void			Logger::setStream(std::ostream &os)	{ _out = &os; }
+std::ostream	&Logger::stream(void) const			{ return *_out; }
+
+void			Logger::setUseColor(bool enabled)	{ _useColor = enabled; }
+bool			Logger::useColor(void) const		{ return _useColor; }
+
+// ============================================================================
+// Configuration
+// ============================================================================
 
 void	Logger::enableCategory(const std::string &category)
 {
@@ -87,19 +97,6 @@ void	Logger::disableCategory(const std::string &category)
 bool	Logger::categoryEnabled(const std::string &category) const
 {
 	return (_categories.find(category) != _categories.end());
-}
-
-void			Logger::setOutputStream(std::ostream &os)	{ _out = &os; }
-std::ostream	&Logger::stream(void) const					{ return *_out; }
-
-void	Logger::setUseColor(bool enabled)
-{
-	_useColor = enabled;
-}
-
-bool	Logger::useColor(void) const
-{
-	return (_useColor);
 }
 
 // ============================================================================

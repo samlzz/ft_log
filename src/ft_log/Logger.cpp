@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 03:00:09 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/11/29 18:59:06 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,8 @@ std::string	Logger::colorize(const std::string &text, const char *ansiCode) cons
 {
 	if (!_useColor || !ansiCode)
 		return (text);
-	return (ansiCode + text + FT_LOG_COLOR_RESET);
+	
+	return (std::string(ansiCode) + text + FT_LOG_COLOR_RESET);
 }
 
 } // namespace ft_log

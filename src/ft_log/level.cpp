@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 21:37:11 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 22:53:25 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:07:37 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ const char	*e_levelLabel(e_log_level lvl)
 		case LOG_INFO:  return "INFO";
 		case LOG_WARN:  return "WARN";
 		case LOG_ERROR: return "ERROR";
-		case LOG_OFF:   return "";
+		default: return "";
 	}
 }
 

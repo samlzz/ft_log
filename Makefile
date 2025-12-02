@@ -13,8 +13,10 @@ OBJ_DIR   = build/
 BIN_DIR   =
 
 ### UFILES_START ###
-FILES =	LogConfig.cpp \
-		Logger.cpp
+FILES =	Log.cpp \
+		LogScope.cpp \
+		Logger.cpp \
+		level.cpp
 ### END ###
 ifeq ($(FILES),)
     $(error FILES is empty: please define source files)

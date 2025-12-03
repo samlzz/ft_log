@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 22:53:24 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:22:04 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ std::ostream	&Logger::log(e_log_level level)
 			os << colorize(label, e_levelColor(level));
 		else
 			os << label;
-		os << ']';
+		os << "] ";
 	}
 	return os;
 }

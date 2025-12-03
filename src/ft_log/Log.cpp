@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:47:37 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 23:13:06 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:22:48 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ std::ostream	&log(const std::string &category, e_log_level level)
 	Logger	&instance = Logger::instance();
 
 	if (instance.enabled(category, level))
-		return (instance.stream());
+		return (instance.log(level));
 	return Logger::_nullStream;
 }
 

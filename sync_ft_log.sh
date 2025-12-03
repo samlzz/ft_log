@@ -8,7 +8,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 REPO_URL="https://github.com/samlzz/ft_log.git"
-TARGET_DIR="vendor"
+TARGET_DIR="."
 LIB_NAME="ft_log"
 
 # ================================================================
@@ -30,7 +30,7 @@ print_info() {
 # ================================================================
 # Validate directory existence
 # ================================================================
-validate_vendor_directory() {
+validate_target_directory() {
     if [[ ! -d "$TARGET_DIR" ]]; then
         print_error "'$TARGET_DIR/' directory not found. Please create it before running this script."
         return 1
@@ -66,15 +66,15 @@ clone_repository() {
 }
 
 # ================================================================
-# Remove .git metadata
+# Remove metadata
 # ================================================================
-remove_git_metadata() {
-    local git_dir="$TARGET_DIR/$LIB_NAME/.git"
+remove_metadata() {
+    local target="$1"
 
-    if [[ -d "$git_dir" ]]; then
-        print_info "delete '$git_dir/.git'"
-        rm -rf "$git_dir" || {
-            print_error "Failed to remove .git directory"
+    if [[ -e "$target" ]] ; then
+        print_info "delete '$target'"
+        rm -rf "$target" || {
+            print_error "Failed to remove $target"
             return 1
         }
     fi
@@ -84,11 +84,12 @@ remove_git_metadata() {
 # Main execution flow
 # ================================================================
 main() {
-    validate_vendor_directory || return 1
+    validate_target_directory || return 1
     remove_existing_library || return 1
     clone_repository || return 1
-    remove_git_metadata || return 1
-    print_info "'$LIB_NAME' successfully installed in $TARGET_DIR."
+    remove_metadata "$TARGET_DIR/$LIB_NAME/.git" || return 1
+    remove_metadata "$TARGET_DIR/$LIB_NAME/sync_ft_log.sh" || return 1
+    print_info "'$LIB_NAME' successfully installed in '$TARGET_DIR/$LIB_NAME'."
 }
 
 main "$@"

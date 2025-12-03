@@ -70,14 +70,27 @@ clone_repository() {
 # ================================================================
 remove_metadata() {
     local target="$1"
+    local confirm="$2"
+    local resp
 
-    if [[ -e "$target" ]] ; then
-        print_info "delete '$target'"
-        rm -rf "$target" || {
-            print_error "Failed to remove $target"
-            return 1
-        }
+    if [[ ! -e "$target" ]]; then
+        return 0
     fi
+
+    if [[ "$confirm" == "true" ]]; then
+        printf "Delete '%s' (y/N): " "$target"
+        read -r resp
+        resp=${resp//[[:space:]]/}
+        resp=${resp,,}
+        if [[ ! "$resp" =~ ^(y|yes)$ ]]; then
+            return 0
+        fi
+    fi
+
+    rm -rf -- "$target" || {
+        print_error "Failed to remove '$target'"
+        return 1
+    }
 }
 
 # ================================================================
@@ -87,8 +100,8 @@ main() {
     validate_target_directory || return 1
     remove_existing_library || return 1
     clone_repository || return 1
-    remove_metadata "$TARGET_DIR/$LIB_NAME/.git" || return 1
-    remove_metadata "$TARGET_DIR/$LIB_NAME/sync_ft_log.sh" || return 1
+    remove_metadata "$TARGET_DIR/$LIB_NAME/.git" 'true' || return 1
+    remove_metadata "$TARGET_DIR/$LIB_NAME/sync_ft_log.sh" 'true' || return 1
     print_info "'$LIB_NAME' successfully installed in '$TARGET_DIR/$LIB_NAME'."
 }
 

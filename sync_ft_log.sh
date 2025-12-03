@@ -100,6 +100,10 @@ main() {
     validate_target_directory || return 1
     remove_existing_library || return 1
     clone_repository || return 1
+	make -C "$TARGET_DIR/$LIB_NAME" &> /dev/null || {
+		print_error "Compilation Failed"
+		return 1
+	}
     remove_metadata "$TARGET_DIR/$LIB_NAME/.git" 'true' || return 1
     remove_metadata "$TARGET_DIR/$LIB_NAME/sync_ft_log.sh" 'true' || return 1
     print_info "'$LIB_NAME' successfully installed in '$TARGET_DIR/$LIB_NAME'."

@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:36:11 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 23:13:00 by sliziard         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:35:17 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,6 @@ void		setLevel(e_log_level threshold);
 e_log_level	getLevel(void);
 
 /**
- * @brief Enable a logging category (e.g. "peg.parser").
- */
-void		enableCategory(const std::string &category);
-
-/**
- * @brief Disable a logging category.
- */
-void		disableCategory(const std::string &category);
-
-/**
- * @brief Check if a category is currently enabled.
- */
-bool		isCategoryEnabled(const std::string &category);
-
-/**
  * @brief Set the output stream used for logging (default: std::cerr).
  */
 void		setOutputStream(std::ostream &os);
@@ -80,6 +65,25 @@ void		setShowLevel(bool enabled);
  * @brief Check whether level prefixing is currently enabled.
  */
 bool		isShowLevelEnabled(void);
+
+// ---------------------------------------------------------------------------
+// Category control
+// ---------------------------------------------------------------------------
+
+/**
+ * @brief Enable a logging category (e.g. "peg.parser").
+ */
+void		enableCategory(const std::string &category);
+
+/**
+ * @brief Disable a logging category.
+ */
+void		disableCategory(const std::string &category);
+
+/**
+ * @brief Check if a category is currently enabled.
+ */
+bool		isCategoryEnabled(const std::string &category);
 
 } // namespace ft_log
 

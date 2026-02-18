@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:49:51 by sliziard          #+#    #+#             */
-/*   Updated: 2026/02/18 13:28:36 by sliziard         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:45:18 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <ctime>
 #include <iostream>
 #include <ostream>
+#include <string>
 
 #include "AnsiColor.hpp"
 #include "internal/Logger.hpp"
@@ -109,7 +110,21 @@ void	Logger::disableCategory(const std::string &category)
 
 bool	Logger::categoryEnabled(const std::string &category) const
 {
-	return (_categories.find(category) != _categories.end());
+	std::string	current = category;
+	size_t	pos;
+
+	while (true)
+	{
+		if (_categories.find(current) != _categories.end())
+			return true;
+
+		pos = current.rfind('.');
+		if (pos == std::string::npos)
+			break;
+
+		current.erase(pos);
+	}
+	return false;
 }
 
 // ============================================================================

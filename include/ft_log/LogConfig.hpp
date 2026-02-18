@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:36:11 by sliziard          #+#    #+#             */
-/*   Updated: 2026/02/18 13:33:04 by sliziard         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:11:15 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,25 @@ bool		isShowTimestamp(void);
 // Category control
 // ---------------------------------------------------------------------------
 
+
 /**
- * @brief Enable a logging category (e.g. "peg.parser").
+ * @brief Enable a category.
+ *
+ * Enabling a parent category automatically enables all subcategories.
+ * (e.g. enableCategory("webserv") enables "webserv.server", etc...)
  */
 void		enableCategory(const std::string &category);
 
 /**
  * @brief Disable a logging category.
+ *
+ * Removes explicit activation only.
+ * Does NOT override an enabled parent category.
  */
 void		disableCategory(const std::string &category);
 
 /**
- * @brief Check if a category is currently enabled.
+ * @brief Returns true if the category or one of its parents is enabled.
  */
 bool		isCategoryEnabled(const std::string &category);
 

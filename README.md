@@ -18,6 +18,9 @@ Its goal is simplicity: a tiny footprint, fast integration, and a clean API with
   - [Global configuration](#global-configuration)
   - [Logging helpers](#logging-helpers)
   - [RAII scope tracing](#raii-scope-tracing)
+- [Category Hierarchy Behavior](#category-hierarchy-behavior)
+  - [Enabling Categories](#enabling-categories)
+  - [Disabling Categories](#disabling-categories)
 - [Architecture Overview](#architecture-overview)
 - [License](#license)
 
@@ -27,9 +30,9 @@ Its goal is simplicity: a tiny footprint, fast integration, and a clean API with
 
 - ✔ **Header-only public API**  
 - ✔ **Configurable global log level**
-- ✔ **Category-based filtering**
+- ✔ **Nested category-based filtering**
 - ✔ **Optional color output**
-- ✔ **Optional level prefix display**
+- ✔ **Optional level and/or timestamp prefix display**
 - ✔ **Indent-aware logging**
 - ✔ **RAII-based scope tracing** via `LogScope`
 - ✔ **Null-stream when logging is disabled** (zero-overhead)
@@ -141,6 +144,7 @@ Header: `LogConfig.hpp`
   * `disableCategory("name")`
   * `isCategoryEnabled("name")`
 
+
 ### Logging helpers
 
 Header: `LogOp.hpp`
@@ -170,6 +174,55 @@ Indentation is tracked globally.
 
 ---
 
+## Category Hierarchy Behavior
+
+`ft_log` uses a **hierarchical category system** based on dot notation.
+
+Categories are treated as prefix trees:
+```
+webserv
+webserv.server
+webserv.server.client
+webserv.http
+webserv.http.routing
+```
+
+### Enabling Categories
+
+Enabling a parent category automatically enables all its subcategories.
+
+Example:
+
+```cpp
+ft_log::enableCategory("webserv");
+```
+
+This enables:
+
+* `webserv`
+* `webserv.server`
+* `webserv.server.client`
+* `webserv.http`
+* `webserv.http.routing`
+* etc...
+
+### Disabling Categories
+
+`disableCategory()` only removes explicit activations.
+
+It does **not** override a parent category.
+
+Example:
+
+```cpp
+ft_log::enableCategory("webserv");
+ft_log::disableCategory("webserv.server.client");
+```
+> `webserv.server.client` will still be enabled, because `webserv` remains enabled.
+
+This design choice keeps the system simple and avoids complex negative rule resolution.
+
+---
 ## Architecture Overview
 
 ```

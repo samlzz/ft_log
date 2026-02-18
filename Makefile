@@ -2,7 +2,7 @@
 #* >> USER CONFIGURATION (MANDATORY)
 # =============================================================================
 
-NAME      ?= libftlog.a
+NAME      = libftlog.a
 ifeq ($(NAME),)
     $(error NAME is empty: please define executable name)
 endif

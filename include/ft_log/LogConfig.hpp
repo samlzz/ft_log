@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:36:11 by sliziard          #+#    #+#             */
-/*   Updated: 2025/12/03 12:35:17 by sliziard         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:33:04 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,17 @@ void		setShowLevel(bool enabled);
  * @brief Check whether level prefixing is currently enabled.
  */
 bool		isShowLevelEnabled(void);
+
+/**
+ * @brief Enable or disable timestamp prefixing for log messages.
+ */
+void		setShowTimestamp(bool enabled);
+
+/**
+ * @brief Check whether timestamp prefixing is currently enabled.
+ */
+bool		isShowTimestamp(void);
+
 
 // ---------------------------------------------------------------------------
 // Category control

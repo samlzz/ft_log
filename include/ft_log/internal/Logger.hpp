@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:33:18 by sliziard          #+#    #+#             */
-/*   Updated: 2025/11/29 22:40:27 by sliziard         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:22:41 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ namespace ft_log
  *  - enabled categories,
  *  - output stream,
  *  - use color flag
- *  - show level in log
+ *  - show level and/or timestamp in log
  *
  * It is not meant to be used directly in most code. Prefer the public
  * facade functions declared in LogConfig.hpp.
@@ -69,21 +69,26 @@ public:
 	void			setShowLvl(bool enabled);
 	bool			showLvl(void) const;
 
+	void			setShowTimestamp(bool enabled);
+	bool			showTimestamp(void) const;
+
 	// ---------------------------------------------------------------------
 	// Query and logging
 	// ---------------------------------------------------------------------
 
-	bool			enabled(const std::string &category,
+	bool				enabled(const std::string &category,
 						e_log_level level) const;
 
-	std::ostream	&log(e_log_level level);
+	std::ostream		&log(e_log_level level);
+
+	static std::string	getTimestamp(void);
 
 	/**
 	 * @brief Colorize text using the given ANSI code.
 	 *
 	 * If colors are disabled, this returns the plain text unchanged.
 	 */
-	std::string		colorize(const std::string &text,
+	std::string			colorize(const std::string &text,
 						const char *ansiCode) const;
 
 	// exposed for LogConfig or any else wrapper
@@ -107,6 +112,7 @@ private:
 	std::ostream			*_out;
 	bool					_useColor;
 	bool					_showLvl;
+	bool					_showTs;
 };
 
 } // namespace ft_log

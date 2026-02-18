@@ -6,7 +6,7 @@
 /*   By: sliziard <sliziard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 22:47:37 by sliziard          #+#    #+#             */
-/*   Updated: 2025/12/03 12:22:48 by sliziard         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:30:37 by sliziard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ void	setShowLevel(bool enabled)
 bool	isShowLevelEnabled(void)
 {
 	return (Logger::instance().showLvl());
+}
+
+void	setShowTimestamp(bool enabled)
+{
+	Logger::instance().setShowTimestamp(enabled);
+}
+
+bool	isShowTimestamp(void)
+{
+	return (Logger::instance().showTimestamp());
 }
 
 // ============================================================================
